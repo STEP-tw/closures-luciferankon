@@ -59,7 +59,12 @@ const curry = function(func,first){
     return func(first,second,third);
   }
 }
-const compose = undefined;
+const compose = function(func1,func2){
+  return function(arg1,arg2){
+    return func1(func2(arg1,arg2));
+  }
+}
+
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
