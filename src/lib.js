@@ -17,7 +17,7 @@ const makeCounterFromZero = function(){
 const makeDeltaTracker = function(old){
   let result = {old:'', delta:'', new:''};
   return function(delta){
-    if(delta==undefined){
+    if(!delta){
       delta=0;
     }
     if(result.old == ''){
