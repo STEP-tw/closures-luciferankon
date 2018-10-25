@@ -14,20 +14,20 @@ const makeCounterFromZero = function(){
     return count++;
   }
 }
-const makeDeltaTracker = undefined;
-//  return function(delta){
-//    let result = {old:'',delta:'',new:''};
-//    if(result.old=='' || delta==undefined){
-//      result = {old:old, delta:0, new:old}
-//      if(delta!=undefined){
-//        result = {old:old, delta:delta, new:old+delta};
-//      }
-//      return result;
-//    }
-//    result={old:old+delta, delta:delta, new:old+delta};
-//    return result;
-//  }
-//}
+const makeDeltaTracker = function(old){
+  let result = {old:'', delta:'', new:''};
+  return function(delta){
+    if(delta==undefined){
+      delta=0;
+    }
+    if(result.old == ''){
+      result = {old: old, delta:delta, new: old+delta};
+      return result;
+    }
+    result = {old:result.new, delta:delta, new: result.new+delta}
+    return result;
+  }
+}
 const makeFiboGenerator = function(secondElement,firstElement){
   if(firstElement!=undefined && secondElement!=undefined){
     let temp = firstElement;
