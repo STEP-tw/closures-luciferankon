@@ -29,21 +29,23 @@ const makeDeltaTracker = function(old){
   }
 }
 const makeFiboGenerator = function(secondElement,firstElement){
-  if(firstElement!=undefined && secondElement!=undefined){
+  if(firstElement && secondElement){
     let temp = firstElement;
     firstElement = secondElement;
     secondElement = temp;
   }
-  if(firstElement==undefined){
-    if(secondElement==undefined){
+  if(!firstElement){
+    if(!secondElement){
       secondElement = 1;
     }
     firstElement = 0;
   }
-  let fibNumber = { fibValue: 0, oldValue:firstElement, newValue:secondElement};
   return function(){
-    fibNumber = { fibValue: fibNumber.oldValue, oldValue: fibNumber.newValue, newValue:fibNumber.oldValue+fibNumber.newValue};
-    return fibNumber.fibValue;
+    let fibNumber = firstElement;
+    let sum = fibNumber + secondElement;
+    firstElement = secondElement;
+    secondElement = sum;
+    return fibNumber;
   }
 }
 const makeCycler = function(source){
