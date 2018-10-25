@@ -46,7 +46,14 @@ const makeFiboGenerator = function(secondElement,firstElement){
     return fibNumber.fibValue;
   }
 }
-const makeCycler = undefined;
+const makeCycler = function(source){
+  let index = 0;
+  let length = source.length;
+  let input = source.slice();
+  return function(){
+    return input[index++%length];
+  }
+}
 const curry = undefined;
 const compose = undefined;
 
