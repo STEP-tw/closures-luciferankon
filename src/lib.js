@@ -22,17 +22,11 @@ const makeDeltaTracker = function(old){
   }
 }
 
-const makeFiboGenerator = function(secondElement,firstElement){
-  if(firstElement && secondElement){
+const makeFiboGenerator = function(secondElement = 1,firstElement = 0){
+  if(firstElement){
     let temp = firstElement;
     firstElement = secondElement;
     secondElement = temp;
-  }
-  if(!firstElement){
-    if(!secondElement){
-      secondElement = 1;
-    }
-    firstElement = 0;
   }
   return function(){
     let fibNumber = firstElement;
