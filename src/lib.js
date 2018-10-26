@@ -23,16 +23,12 @@ const makeDeltaTracker = function(old){
 }
 
 const makeFiboGenerator = function(secondElement = 1,firstElement = 0){
-  if(firstElement){
-    let temp = firstElement;
-    firstElement = secondElement;
-    secondElement = temp;
-  }
+  let firstTerm = Math.min(firstElement,secondElement);
+  let secondTerm = Math.max(firstElement,secondElement);
   return function(){
-    let fibNumber = firstElement;
-    let sum = fibNumber + secondElement;
-    firstElement = secondElement;
-    secondElement = sum;
+    let fibNumber = firstTerm;
+    firstTerm = secondTerm;
+    secondTerm = fibNumber + firstTerm;
     return fibNumber;
   }
 }
