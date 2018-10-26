@@ -15,16 +15,9 @@ const makeCounterFromZero = function(){
 }
 
 const makeDeltaTracker = function(old){
-  let result = {old:'', delta:'', new:''};
-  return function(delta){
-    if(!delta){
-      delta=0;
-    }
-    if(result.old == ''){
-      result = {old: old, delta:delta, new: old+delta};
-      return result;
-    }
-    result = {old:result.new, delta:delta, new: result.new+delta}
+  return function(delta=0){
+    let result = {old: old, delta:delta, new: old+delta};
+    old = old + delta;
     return result;
   }
 }
